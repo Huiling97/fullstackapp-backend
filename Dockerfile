@@ -10,10 +10,10 @@ ENV USER root
 RUN npm install -g express-generator
 RUN npm install express --save
 RUN useradd -ms /bin/bash user
-COPY app.js /home/user/app.js
-COPY start.sh /home/user/start.sh
-RUN chmod a+x /home/user/start.sh
+COPY app.js /tmp/start.sh
+COPY start.sh /tmp/start.sh
+RUN chmod a+x /tmp/start.sh
 USER user
-WORKDIR /home/user
+WORKDIR /tmp
 
-CMD ["sh","/home/user/start.sh"]
+CMD ["sh","/tmp/start.sh"]
